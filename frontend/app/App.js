@@ -1,6 +1,15 @@
-// @flow
-import boot from "./src/boot/index";
+import React, { Component } from "react";
+import { Provider } from "react-redux";
 
-const app = boot();
+import store from "./src/store";
+import Main from "./src/routes";
 
-export default app;
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Main />
+      </Provider>
+    );
+  }
+}
