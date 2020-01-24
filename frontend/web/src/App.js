@@ -14,7 +14,12 @@ import web3 from './blockchain/web3';
 
 export default class App extends Component {
   componentDidMount() {
-    
+    this.doblockchain()
+  }
+
+  doblockchain = async () => {
+    const accounts = await web3.eth.getAccounts();
+    console.log(accounts)
   }
   
 

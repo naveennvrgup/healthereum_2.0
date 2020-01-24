@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import { Link } from 'react-router-dom'
 import { MDBBtn, MDBDataTable, MDBBadge } from 'mdbreact';
 import Logo from '../logo';
 import UserInfo from '../Doctor/right-panel';
@@ -98,6 +99,11 @@ class DatatablePage extends Component {
         <h2 className="header-down-logo">Appointment Dashboard</h2>
         <div className="row">
           <div className="col-md-9">
+            <div className="text-right">
+              <Link to='/'>New Docter</Link>
+              <Link to='/'>New Patient</Link>
+              <Link to='/'>New Appointment</Link>
+            </div>
             <MDBDataTable style={{ width: "100%" }}
               striped
               bordered
