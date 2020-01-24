@@ -19,7 +19,7 @@ ruler = EntityRuler(nlp)
 with open('google.csv', 'r')as f:
     tests = csv.reader(f)
 
-patterns.append{"label": "HBA1C", "pattern": [{"LOWER": "hba1c"}]}
+patterns.append({"label": "HBA1C", "pattern": [{"LOWER": "hba1c"}]})
 ruler.add_patterns(patterns)
 nlp.add_pipe(ruler)
 

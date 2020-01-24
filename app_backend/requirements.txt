@@ -2,4 +2,6 @@ spacy
 nltk
 textract
 PyPDF2
-
+flask_restful
+flask
+six==1.12.0
