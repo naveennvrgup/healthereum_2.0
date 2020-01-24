@@ -13,7 +13,6 @@ class Content extends Component {
         
         this.slides = this.slideshow.children;
         this.slidetext=this.slideshowtext.children;
-        console.log(this.slidetext);
         
         this.index = 0;
     }
@@ -74,17 +73,17 @@ class Content extends Component {
                     <div className="active">
                         <h2 style={{fontWeight:"bolder"}}>EAT Healthy<br></br>Stay Healthy</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                        <Link to="#">Read More</Link>
+                        <Link to="/">Read More</Link>
                     </div>
                     <div>
                         <h2 style={{fontWeight:"bolder"}}>EAT Your<br></br>Veggies</h2>
                         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <Link to="#">Read More</Link>
+                        <Link to="/">Read More</Link>
                     </div>
                     <div>
                         <h2 style={{fontWeight:"bolder"}}>Good Food<br></br>Good Mood</h2>
                         <p>Quam pellentesque nec nam aliquam sem et. Rutrum quisque non tellus orci ac auctor augue mauris augue. Non arcu risus quis varius quam quisque id diam.</p>
-                        <Link to="#">Read More</Link>
+                        <Link to="/">Read More</Link>
                     </div>
                     
                 </div>
@@ -97,13 +96,13 @@ class Content extends Component {
             </div>
             <div className="icons">
                 <ul className="sci">
-                    <li><Link to="#"><img src={require("../assets/fb.png")} alt=""/></Link></li>
-                    <li><Link to="#"><img src={require("../assets/ins.png")} alt=""/></Link></li>
-                    <li><Link to="#"><img src={require("../assets/tw.png")} alt=""/></Link></li>
+                    <li><Link to="/"><img src={require("../assets/fb.png")} alt=""/></Link></li>
+                    <li><Link to="/"><img src={require("../assets/ins.png")} alt=""/></Link></li>
+                    <li><Link to="/"><img src={require("../assets/tw.png")} alt=""/></Link></li>
                 </ul>
                 <ul className="controls">
-                    <li><Link><img src={require("../assets/la.png")} onClick={()=>slideahead()} alt=""/></Link></li>
-                    <li><Link><img src={require("../assets/ra.png")} onClick={()=>slidebehind()} alt=""/></Link></li>
+                    <li><Link to='/'><img src={require("../assets/la.png")} onClick={()=>slideahead()} alt=""/></Link></li>
+                    <li><Link to='/'><img src={require("../assets/ra.png")} onClick={()=>slidebehind()} alt=""/></Link></li>
                 </ul>
             </div>
             </Fragment>

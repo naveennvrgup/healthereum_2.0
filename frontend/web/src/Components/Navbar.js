@@ -18,7 +18,7 @@ class Navbar extends Component {
     render() {
         return (
             <header>
-                <Link href="" className="logo">Health<span>Ereum</span></Link>
+                <Link to="" className="logo">Health<span>Ereum</span></Link>
                 <ul>
                     <li>
                         <Link
