@@ -30,7 +30,7 @@
 }
 
 .container:after{
-  content: 'Healthy';
+  /* content: 'Healthy'; */
   position: absolute;
   bottom: 0;
   left: 0;
