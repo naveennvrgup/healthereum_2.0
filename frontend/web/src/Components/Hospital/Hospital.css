@@ -19,3 +19,8 @@
   .site-layout .site-layout-background {
     background: #fff;
   }
+
+  .label{
+    font-weight: bold;
+    margin-top: 10px;
+  }
