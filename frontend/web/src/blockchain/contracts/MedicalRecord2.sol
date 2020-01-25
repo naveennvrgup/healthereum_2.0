@@ -42,6 +42,8 @@ contract Courses{
         uint[] billArr;
         
         uint[] appointmentArr;
+        uint[] testArr;
+        bool[] testDone;
     }
     
     struct Docter{
@@ -137,7 +139,7 @@ contract Courses{
     struct Item{
         string name;
         string price;
-        string quantity;
+        uint quantity;
     }
     
     
@@ -350,7 +352,7 @@ contract Courses{
     }
     
     function getBillItem(uint appointmentId,uint billId, uint billItemId) public view returns(
-        string memory, string memory, string memory){
+        string memory, string memory, uint){
         return(
             appointments[appointmentId].bills[billId].items[billItemId].name,
             appointments[appointmentId].bills[billId].items[billItemId].price,
@@ -443,11 +445,98 @@ contract Courses{
         string memory allergies,
         string memory importantNotes,
         string memory medications,
-        bool organDonar)public{
+        bool organDonar)
+    public{
             patients[patientId].medicalConditions=medicalConditions;
             patients[patientId].allergies=allergies;
             patients[patientId].importantNotes=importantNotes;
             patients[patientId].medications=medications;
             patients[patientId].organDonar=organDonar;
+    }
+    
+    function createAppointment(uint hospitalId, 
+    uint patientId, uint appointmentId, string memory createdAt) public {
+        
+        appointments[appointmentId].createdAt = createdAt;
+        appointments[appointmentId].hospitalId=hospitalId;
+        appointments[appointmentId].patientId=patientId;
+        
+        patients[patientId].appointmentArr.push(appointmentId);
+        hospitals[hospitalId].appointmentArr.push(appointmentId);
+    }
+    
+    function setAppointmentExtras(uint appointmentId,
+    string memory patientNote, 
+    string memory receptionNote, 
+    string memory finalNote) public {
+        appointments[appointmentId].patientNote = patientNote;
+        appointments[appointmentId].receptionNote = receptionNote;
+        appointments[appointmentId].finalNote = finalNote;
+        
+    }
+    
+    function respondAppointment(uint appointmentId,
+    bool accepted,bool seen) public {
+        appointments[appointmentId].accepted = accepted;
+        appointments[appointmentId].seen = seen;
+    }
+    
+    function completeAppointment(uint appointmentId) public {
+        appointments[appointmentId].completed = true;
+    }
+    
+    function addTest(uint appointmentId, uint docterId,
+    uint patientId,uint testId, uint hospitalId, string memory createdAt, string memory description)
+    public{
+        appointments[appointmentId].tests[testId].docterId=docterId;
+        appointments[appointmentId].tests[testId].patientId=patientId;
+        appointments[appointmentId].tests[testId].createdAt=createdAt;
+        appointments[appointmentId].tests[testId].description=description;
+        
+        appointments[appointmentId].testArr.push(testId);
+        hospitals[hospitalId].testArr.push(testId);
+        hospitals[hospitalId].testDone.push(false);
+    }
+    
+    function testReport(uint appointmentId, uint hospitalId, uint testId, string memory results)public{
+        appointments[appointmentId].tests[testId].results=results;
+        appointments[appointmentId].tests[testId].running=true;
+        
+        for(uint i=0;i<hospitals[hospitalId].testArr.length;i++){
+            if(hospitals[hospitalId].testArr[i]==testId){
+                hospitals[hospitalId].testDone[i]=true;
+            }
         }
+    }
+    
+    function addDiagnosis(uint appointmentId, uint diagnosisId, string memory description)
+    public{
+        appointments[appointmentId].diagnosises[diagnosisId].description=description;
+    
+        appointments[appointmentId].diagnosisArr.push(diagnosisId);
+    }
+    
+    function addProcedure(uint appointmentId, uint procedureId, 
+    string memory description, string memory createdAt, Severity severity) public{
+        appointments[appointmentId].procedures[procedureId].createdAt= createdAt;
+        appointments[appointmentId].procedures[procedureId].severity=severity;
+        appointments[appointmentId].procedures[procedureId].description=description;
+        
+        appointments[appointmentId].procedureArr.push(procedureId);
+    }
+    
+    function addBill(uint appointmentId, uint billId, string memory createdAt)
+    public {
+        appointments[appointmentId].bills[billId].createdAt=createdAt;
+        appointments[appointmentId].billArr.push(billId);
+    }
+    
+    function addBillItem(uint appointmentId, uint billId,uint billItemId, 
+    string memory name, string memory price, uint quantity)public{
+        appointments[appointmentId].bills[billId].items[billItemId].name =name;
+        appointments[appointmentId].bills[billId].items[billItemId].price=price;
+        appointments[appointmentId].bills[billId].items[billItemId].quantity=quantity;
+        
+        appointments[appointmentId].bills[billId].itemArr.push(billItemId);
+    }
 }
