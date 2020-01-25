@@ -93,7 +93,7 @@ contract Courses{
         mapping(uint=>Procedure) procedures;
         uint[] procedureArr;
         
-        mapping(uint=>Diagnosis) Diagnosises;
+        mapping(uint=>Diagnosis) diagnosises;
         uint[] diagnosisArr;
         
         mapping(uint=>Test) tests;
@@ -103,7 +103,7 @@ contract Courses{
     
     struct Test{
         uint docterId;
-        uint Patient;
+        uint patient;
         string createdAt;
         string description;
         string results;
@@ -269,27 +269,58 @@ contract Courses{
         );
     }
     
-    function get(uint ,) public view returns(){
+    function getDocter(uint hospitalId,uint docterId) public view returns(
+        string memory,string memory,
+        string memory,Gender){
         return(
-            
+            hospitals[hospitalId].docters[docterId].img,
+            hospitals[hospitalId].doc,
+            Genderters[docterId].speciality,
+            hospitals[hospitalId].docters[docterId].qualification,
+            hospitals[hospitalId].docters[docterId].gender
         );
     }
 
-    function get(uint ,) public view returns(){
+    function getAppointment(uint appointmentId) public view returns(
+            uint, bool, string memory,
+            string memory,string memory,
+            string memory,string memory,
+            bool,bool,bool
+        ){
         return(
-            
+            appointments[appointmentId].prevAppointmentId,
+            appointments[appointmentId].prevAppointmentbool,
+            appointments[appointmentId].patientNote,
+            appointments[appointmentId].receptionNote,
+            appointments[appointmentId].finalNote,
+            appointments[appointmentId].createdAt,
+            appointments[appointmentId].accepted,
+            appointments[appointmentId].seen,
+            appointments[appointmentId].completed
         );
     }
 
-    function get(uint ,) public view returns(){
+    function getTest(uint appointmentId,uint testId) public view returns(
+        uint, uint, string memory,
+        string memory,string memory,
+        string memory,bool){
         return(
-            
+            appointments[appointmentId].tests[testId].docterId,
+            appointments[appointmentId].tests[testId].patientId,
+            appointments[appointmentId].tests[testId].createdAt,
+            appointments[appointmentId].tests[testId].description,
+            appointments[appointmentId].tests[testId].results,
+            appointments[appointmentId].tests[testId].file,
+            appointments[appointmentId].tests[testId].running
         );
     }
     
-    function get(uint ,) public view returns(){
+    function getDiagnosis(uint appointmentId, uint diagnosisId) public view returns(
+        string memory, bool, uint){
         return(
-            
+            appointments[appointmentId].diagnosises[diagnosisId].description,
+            appointments[appointmentId].diagnosises[diagnosisId].basedOnTest,
+            appointments[appointmentId].diagnosises[diagnosisId].testId
         );
     }
     
