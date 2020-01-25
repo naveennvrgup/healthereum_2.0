@@ -6,7 +6,7 @@ if(typeof window !== 'undefined' && typeof  window.web3 !== 'undefined'){
 }
 else {
     const provider = new Web3.providers.HttpProvider(
-        'https://rinkeby.infura.io/v3/7b81a4617bdb4456af692497c074ccc3'
+        'https://testnet2.matic.network'
     );
     web3 = new Web3(provider);
 }

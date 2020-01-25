@@ -1,0 +1,1087 @@
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "procedureId",
+				"type": "uint256"
+			},
+			{
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"name": "createdAt",
+				"type": "string"
+			},
+			{
+				"name": "severity",
+				"type": "uint8"
+			}
+		],
+		"name": "addProcedure",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "billId",
+				"type": "uint256"
+			}
+		],
+		"name": "listBillItems",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			}
+		],
+		"name": "getAppointment",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "billId",
+				"type": "uint256"
+			},
+			{
+				"name": "createdAt",
+				"type": "string"
+			}
+		],
+		"name": "addBill",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			}
+		],
+		"name": "listBills",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			}
+		],
+		"name": "getAppointmentNotes",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "listHospitals",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hopitalId",
+				"type": "uint256"
+			}
+		],
+		"name": "getHospitalImg",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "patientId",
+				"type": "uint256"
+			},
+			{
+				"name": "medicalConditions",
+				"type": "string"
+			},
+			{
+				"name": "allergies",
+				"type": "string"
+			},
+			{
+				"name": "importantNotes",
+				"type": "string"
+			},
+			{
+				"name": "medications",
+				"type": "string"
+			},
+			{
+				"name": "organDonar",
+				"type": "bool"
+			}
+		],
+		"name": "addPatientExtras",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hospitalId",
+				"type": "uint256"
+			},
+			{
+				"name": "docterId",
+				"type": "uint256"
+			}
+		],
+		"name": "getDocter",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "email",
+				"type": "string"
+			}
+		],
+		"name": "getUser",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint8"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "billId",
+				"type": "uint256"
+			},
+			{
+				"name": "billItemId",
+				"type": "uint256"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "price",
+				"type": "string"
+			},
+			{
+				"name": "quantity",
+				"type": "uint256"
+			}
+		],
+		"name": "addBillItem",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			}
+		],
+		"name": "completeAppointment",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "phone",
+				"type": "string"
+			},
+			{
+				"name": "email",
+				"type": "string"
+			},
+			{
+				"name": "userType",
+				"type": "uint8"
+			},
+			{
+				"name": "userId",
+				"type": "uint256"
+			},
+			{
+				"name": "userTypeId",
+				"type": "uint256"
+			}
+		],
+		"name": "setUser",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "procedureId",
+				"type": "uint256"
+			}
+		],
+		"name": "getProcedure",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint8"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "testId",
+				"type": "uint256"
+			}
+		],
+		"name": "getTest",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "docterId",
+				"type": "uint256"
+			},
+			{
+				"name": "patientId",
+				"type": "uint256"
+			},
+			{
+				"name": "testId",
+				"type": "uint256"
+			},
+			{
+				"name": "hospitalId",
+				"type": "uint256"
+			},
+			{
+				"name": "createdAt",
+				"type": "string"
+			},
+			{
+				"name": "description",
+				"type": "string"
+			}
+		],
+		"name": "addTest",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hospitalId",
+				"type": "uint256"
+			},
+			{
+				"name": "docterId",
+				"type": "uint256"
+			},
+			{
+				"name": "speciality",
+				"type": "string"
+			},
+			{
+				"name": "qualification",
+				"type": "string"
+			},
+			{
+				"name": "gender",
+				"type": "uint8"
+			}
+		],
+		"name": "addDocter",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "billId",
+				"type": "uint256"
+			},
+			{
+				"name": "billItemId",
+				"type": "uint256"
+			}
+		],
+		"name": "getBillItem",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hopitalId",
+				"type": "uint256"
+			}
+		],
+		"name": "listHospitalAppointments",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "diagnosisId",
+				"type": "uint256"
+			},
+			{
+				"name": "description",
+				"type": "string"
+			}
+		],
+		"name": "addDiagnosis",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "patientId",
+				"type": "uint256"
+			}
+		],
+		"name": "getPatient",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			},
+			{
+				"name": "",
+				"type": "uint8"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "patientNote",
+				"type": "string"
+			},
+			{
+				"name": "receptionNote",
+				"type": "string"
+			},
+			{
+				"name": "finalNote",
+				"type": "string"
+			}
+		],
+		"name": "setAppointmentExtras",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			}
+		],
+		"name": "listDiagnosis",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hospitalId",
+				"type": "uint256"
+			},
+			{
+				"name": "patientId",
+				"type": "uint256"
+			},
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "createdAt",
+				"type": "string"
+			}
+		],
+		"name": "createAppointment",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			}
+		],
+		"name": "listProcedures",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "billId",
+				"type": "uint256"
+			}
+		],
+		"name": "getBill",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hospitalId",
+				"type": "uint256"
+			}
+		],
+		"name": "listDocters",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "accepted",
+				"type": "bool"
+			},
+			{
+				"name": "seen",
+				"type": "bool"
+			}
+		],
+		"name": "respondAppointment",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			}
+		],
+		"name": "listTests",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hopitalId",
+				"type": "uint256"
+			}
+		],
+		"name": "getHospital",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "hospitalId",
+				"type": "uint256"
+			},
+			{
+				"name": "testId",
+				"type": "uint256"
+			},
+			{
+				"name": "results",
+				"type": "string"
+			}
+		],
+		"name": "testReport",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "a",
+				"type": "string"
+			},
+			{
+				"name": "b",
+				"type": "string"
+			}
+		],
+		"name": "compareStrings",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "appointmentId",
+				"type": "uint256"
+			},
+			{
+				"name": "diagnosisId",
+				"type": "uint256"
+			}
+		],
+		"name": "getDiagnosis",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "hospitalId",
+				"type": "uint256"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "location",
+				"type": "string"
+			},
+			{
+				"name": "phones",
+				"type": "string"
+			},
+			{
+				"name": "speciality",
+				"type": "string"
+			},
+			{
+				"name": "emails",
+				"type": "string"
+			},
+			{
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"name": "hositalType",
+				"type": "uint8"
+			}
+		],
+		"name": "addHospital",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "patientId",
+				"type": "uint256"
+			}
+		],
+		"name": "listPatientAppointments",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "patientId",
+				"type": "uint256"
+			},
+			{
+				"name": "height",
+				"type": "uint256"
+			},
+			{
+				"name": "weight",
+				"type": "uint256"
+			},
+			{
+				"name": "dob",
+				"type": "string"
+			},
+			{
+				"name": "bloodType",
+				"type": "uint8"
+			}
+		],
+		"name": "addPatient",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "patientId",
+				"type": "uint256"
+			}
+		],
+		"name": "getPatientExtra",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
