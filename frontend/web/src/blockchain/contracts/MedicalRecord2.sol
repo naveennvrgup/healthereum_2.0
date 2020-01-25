@@ -41,7 +41,6 @@ contract Courses{
         mapping(uint => Bill) bills;
         uint[] billArr;
         
-        mapping(uint => Appointment) appointments;
         uint[] appointmentArr;
     }
     
@@ -51,7 +50,6 @@ contract Courses{
         string qualification;
         Gender gender;
         
-        mapping(uint=>Appointment) appointments;
         uint[] appointmentArr;
         bool[] appointmentOpen;
     }
@@ -68,15 +66,15 @@ contract Courses{
         string importantNotes;
         bool organDonar;
         
-        mapping(uint=>Appointment) appointments;
         uint[] appointmentArr;
-
     }
     
     
     struct Appointment{
         uint prevAppointmentId;
         bool prevAppointmentbool;
+        uint hospitalId;
+        uint patientId;
         
         string patientNote;
         string receptionNote;
@@ -151,15 +149,10 @@ contract Courses{
     uint[] userArr;
     
     mapping(uint=>Hospital) hospitals;
-    uint[] hospitalArr;
-    
     mapping(uint=>Patient) patients;
-    mapping(uint=>Appointment) appointments;
-    mapping(uint=>Docter) docters;
-    mapping(uint=>Test) tests;
-    mapping(uint=>Diagnosis) diagnosises;
-    mapping(uint=>Procedure) procedures;
-    mapping(uint=>Bill) bills;
+    mapping(uint=>Appointment)appointments;
+    uint[] hospitalArr;
+
 
     // 
     // helpers
@@ -206,8 +199,8 @@ contract Courses{
         return(appointments[appointmentId].testArr);
     }
     
-    function listBillItems(uint billId) public view returns(uint[] memory){
-        return(bills[billId].itemArr );
+    function listBillItems(uint appointmentId, uint billId) public view returns(uint[] memory){
+        return(appointments[appointmentId].bills[billId].itemArr );
     }
 
     
@@ -304,11 +297,13 @@ contract Courses{
     }
     
     function getAppointmentNotes(uint appointmentId) public view returns(
-        string memory,string memory,string memory){
+        string memory,string memory,string memory, uint, uint){
         return(
             appointments[appointmentId].patientNote,
             appointments[appointmentId].receptionNote,
-            appointments[appointmentId].finalNote);
+            appointments[appointmentId].finalNote,
+            appointments[appointmentId].patientId,
+            appointments[appointmentId].hospitalId);
     }
 
     function getTest(uint testId) public view returns(
@@ -366,4 +361,61 @@ contract Courses{
     // set functions
     //
     
+    function setUser(string memory name,
+    string memory phone,
+    string memory email,
+    UserType userType,
+    uint userId,
+    uint userTypeId
+    ) public returns(bool) {
+        bool exists = compareStrings(users[userId].name,'');
+        
+        users[userId].name = name;
+        users[userId].phone = phone;
+        users[userId].email = email;
+        users[userId].userType = userType;
+        users[userId].id = userTypeId;
+        
+        if(exists==false){
+            userArr.push(userId);
+        }
+        
+        return(exists);
+    }
+    
+    function addHospital(
+        uint hospitalId,
+        string memory name,
+        string memory location,
+        string memory phones,
+        string memory speciality,
+        string memory emails,
+        string memory description,
+        HositalType hositalType
+        ) public returns(bool){
+        bool exists = compareStrings(hospitals[hospitalId].name, '');
+        
+        hospitals[hospitalId].name = name;
+        hospitals[hospitalId].location = location;
+        hospitals[hospitalId].phones = phones;
+        hospitals[hospitalId].speciality = speciality;
+        hospitals[hospitalId].emails = emails;
+        hospitals[hospitalId].description = description;
+        hospitals[hospitalId].hositalType = hositalType;
+        
+        if(exists==false){
+            hospitalArr.push(hospitalId);
+        }
+    }
+    
+    // function addDocter(
+    //     string memory speciality,
+    //     string memory qualification,
+    //     Gender gender) public returns(bool) {
+    //     doc
+    // }
+    
+    // function addPatient() public {
+        
+    // }
 }
