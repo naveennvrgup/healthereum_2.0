@@ -147,11 +147,11 @@ contract Courses{
 
     mapping(uint=>User) users;
     uint[] userArr;
-    
     mapping(uint=>Hospital) hospitals;
+    uint[] hospitalArr;
     mapping(uint=>Patient) patients;
     mapping(uint=>Appointment)appointments;
-    uint[] hospitalArr;
+    
 
 
     // 
@@ -224,6 +224,8 @@ contract Courses{
                     users[userArr[i]].id);
             }
         }
+        
+        return (users[777].name,users[777].name,users[777].name,users[777].userType,users[777].id);
     }
     
     function getHospital(uint hopitalId) public view returns(
@@ -306,54 +308,53 @@ contract Courses{
             appointments[appointmentId].hospitalId);
     }
 
-    function getTest(uint testId) public view returns(
-        uint, uint, string memory,
+    function getTest(uint appointmentId,uint testId) public view returns(
+        uint, string memory,
         string memory,string memory,
         string memory,bool){
         return(
-            tests[testId].docterId,
-            tests[testId].patientId,
-            tests[testId].createdAt,
-            tests[testId].description,
-            tests[testId].results,
-            tests[testId].file,
-            tests[testId].running
+            appointments[appointmentId].tests[testId].docterId,
+            appointments[appointmentId].tests[testId].createdAt,
+            appointments[appointmentId].tests[testId].description,
+            appointments[appointmentId].tests[testId].results,
+            appointments[appointmentId].tests[testId].file,
+            appointments[appointmentId].tests[testId].running
         );
     }
     
-    function getDiagnosis(uint diagnosisId) public view returns(
+    function getDiagnosis(uint appointmentId,uint diagnosisId) public view returns(
         string memory, bool, uint){
         return(
-            diagnosises[diagnosisId].description,
-            diagnosises[diagnosisId].basedOnTest,
-            diagnosises[diagnosisId].testId
+            appointments[appointmentId].diagnosises[diagnosisId].description,
+            appointments[appointmentId].diagnosises[diagnosisId].basedOnTest,
+            appointments[appointmentId].diagnosises[diagnosisId].testId
         );
     }
     
-    function getProcedure(uint procedureId) public view returns(
+    function getProcedure(uint appointmentId,uint procedureId) public view returns(
         uint, string memory, string memory, Severity, string memory){
         return(
-            procedures[procedureId].docterId,
-            procedures[procedureId].description,
-            procedures[procedureId].createdAt,
-            procedures[procedureId].severity,
-            procedures[procedureId].file
+            appointments[appointmentId].procedures[procedureId].docterId,
+            appointments[appointmentId].procedures[procedureId].description,
+            appointments[appointmentId].procedures[procedureId].createdAt,
+            appointments[appointmentId].procedures[procedureId].severity,
+            appointments[appointmentId].procedures[procedureId].file
         );
     }
     
-    function getBill(uint billId) public view returns(
+    function getBill(uint appointmentId,uint billId) public view returns(
         string memory){
         return(
-            bills[billId].createdAt
+            appointments[appointmentId].bills[billId].createdAt
         );
     }
     
-    function getBillItem(uint billId, uint billItemId) public view returns(
+    function getBillItem(uint appointmentId,uint billId, uint billItemId) public view returns(
         string memory, string memory, string memory){
         return(
-            bills[billId].items[billItemId].name,
-            bills[billId].items[billItemId].price,
-            bills[billId].items[billItemId].quantity
+            appointments[appointmentId].bills[billId].items[billItemId].name,
+            appointments[appointmentId].bills[billId].items[billItemId].price,
+            appointments[appointmentId].bills[billId].items[billItemId].quantity
         );
     }
     
@@ -408,14 +409,45 @@ contract Courses{
         }
     }
     
-    // function addDocter(
-    //     string memory speciality,
-    //     string memory qualification,
-    //     Gender gender) public returns(bool) {
-    //     doc
-    // }
-    
-    // function addPatient() public {
+    function addDocter(
+        uint hospitalId,
+        uint docterId,
+        string memory speciality,
+        string memory qualification,
+        Gender gender) public returns(bool) {
+        bool exists = compareStrings(hospitals[hospitalId].docters[docterId].speciality,'');
         
-    // }
+        hospitals[hospitalId].docters[docterId].speciality = speciality;
+        hospitals[hospitalId].docters[docterId].qualification = qualification;
+        hospitals[hospitalId].docters[docterId].gender =gender;
+        
+        if(exists == true){
+            hospitals[hospitalId].docterArr.push(docterId);
+        }
+        
+    }
+    
+    function addPatient(
+        uint patientId,
+        uint height, uint weight,
+        string memory dob, BloodType bloodType) public {
+        patients[patientId].height=height;
+        patients[patientId].weight=weight;
+        patients[patientId].dob=dob;
+        patients[patientId].bloodType=bloodType;
+    }
+    
+    function addPatientExtras(
+        uint patientId,
+        string memory medicalConditions,
+        string memory allergies,
+        string memory importantNotes,
+        string memory medications,
+        bool organDonar)public{
+            patients[patientId].medicalConditions=medicalConditions;
+            patients[patientId].allergies=allergies;
+            patients[patientId].importantNotes=importantNotes;
+            patients[patientId].medications=medications;
+            patients[patientId].organDonar=organDonar;
+        }
 }
