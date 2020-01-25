@@ -1,10 +1,16 @@
 import React, { Component, } from 'react'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import { Layout, Menu, Icon } from 'antd';
 import './Hospital.css';
 
+import Dashboard from './Dashboard'
+import Appointments from './appointments'
+import Bills from './bills'
+import Doctors from './doctors'
+
 const { Header, Sider, Content } = Layout;
 
-export default class Hospital extends Component {
+class Hospital extends Component {
     state = {
         collapsed: false,
     };
@@ -14,6 +20,10 @@ export default class Hospital extends Component {
             collapsed: !this.state.collapsed,
         });
     };
+
+    logout = () => {
+        alert('logged out')
+    }
 
     render() {
         return (
@@ -26,24 +36,24 @@ export default class Hospital extends Component {
                         : <div className="logo text-white text-center h3 py-4">
                             Hospital
                 </div>}
-                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                        <Menu.Item key="1">
+                    <Menu theme="dark" mode="inline" >
+                        <Menu.Item to='/hosf/' className='d-flex align-items-baseline' onClick={() => this.props.history.push('/hospital/')} key="1">
                             <Icon type="dashboard" />
                             <span>Dashboard</span>
                         </Menu.Item>
-                        <Menu.Item key="2">
+                        <Menu.Item className='d-flex align-items-baseline' onClick={() => this.props.history.push('/hospital/appointments/')} key="2">
                             <Icon type="clock-circle" />
                             <span>Appointments</span>
                         </Menu.Item>
-                        <Menu.Item key="3">
+                        <Menu.Item className='d-flex align-items-baseline' onClick={() => this.props.history.push('/hospital/doctors/')} key="3">
                             <Icon type="heart" />
                             <span>Docters</span>
                         </Menu.Item>
-                        <Menu.Item key="r">
+                        <Menu.Item className='d-flex align-items-baseline' onClick={() => this.props.history.push('/hospital/bills/')} key="4">
                             <Icon type="credit-card" />
                             <span>Bills</span>
                         </Menu.Item>
-                        <Menu.Item key="r">
+                        <Menu.Item onClick={this.logout} className='d-flex align-items-baseline' key="5">
                             <Icon type="logout" />
                             <span>Logout</span>
                         </Menu.Item>
@@ -63,10 +73,17 @@ export default class Hospital extends Component {
                             minHeight: 280,
                         }}
                     >
-                        Content
-              </Content>
+                        <Switch>
+                            <Route component={Appointments} path='/hospital/appointments/' />
+                            <Route component={Doctors} path='/hospital/doctors/' />
+                            <Route component={Bills} path='/hospital/bills/' />
+                            <Route component={Dashboard}  path='/hospital/' />
+                        </Switch>
+                    </Content>
                 </Layout>
             </Layout>
         );
     }
 }
+
+export default withRouter(Hospital)

@@ -19,9 +19,9 @@ export default class App extends Component {
           <Switch>
             <Route exact path='/' component={Content} />
 
-            <Route path='/docter' exact={true} component={Docter} />
-            <Route path='/hospital' exact={true} component={Hospital} />
-            <Route path='/patient' exact={true} component={Patient} />
+            <Route path='/docter' component={Docter} />
+            <Route path='/hospital' component={Hospital} />
+            <Route path='/patient' component={Patient} />
 
           </Switch>
 
