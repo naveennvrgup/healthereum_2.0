@@ -18,18 +18,20 @@ class Navbar extends Component {
     render() {
         return (
             <header>
-                <Link to="" className="logo">Health<span>Ereum</span></Link>
-                <ul>
-                    <li>
-                        <Link
-                            style={{
-                                fontWeight: 800,
-                                border: "2px solid #78ff00",
-                                color: 'white'
-                            }} to="#" onClick={this.toggle} >Login/Signup
+                <div className="d-flex justify-content-between">
+                    <Link to="" className="logo">Health<span>Ereum</span></Link>
+                    <ul>
+                        <li>
+                            <Link
+                                style={{
+                                    fontWeight: 800,
+                                    border: "2px solid #78ff00",
+                                    color: 'white'
+                                }} to="#" onClick={this.toggle} >Login/Signup
                         </Link>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
 
                 <MDBModal isOpen={this.state.modal} size="lg" toggle={this.toggle} centered>
                     <MDBModalBody style={{ background: "#333" }}>
