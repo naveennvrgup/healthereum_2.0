@@ -213,6 +213,86 @@ contract Courses{
     // get view functions
     //
     
+    function getUser(string memory email) public view returns(
+        string memory, 
+        string memory, 
+        string memory,
+        UserType,
+        uint){
+        for(int i=0;i<userArr.length;i++){
+            if(compareStrings(users[userArr[i]].email,email)){
+                return(
+                    users[userArr[i]].name,
+                    users[userArr[i]].phone,
+                    users[userArr[i]].email,
+                    users[userArr[i]].UserType,
+                    users[userArr[i]].id);
+            }
+        }
+    }
+    
+    function getHospital(uint hopitalId) public view returns(
+            string memory,string memory,
+            string memory,string memory,
+            string memory,string memory,
+            string memory,HositalType
+        ){
+        return(
+            hospitals[hopitalId].name,
+            hospitals[hopitalId].location,
+            hospitals[hopitalId].phones,
+            hospitals[hopitalId].speciality,
+            hospitals[hopitalId].img,
+            hospitals[hopitalId].emails,
+            hospitals[hopitalId].description,
+            hospitals[hopitalId].hositalType
+        );
+    }
+    
+    function getPatient(uint patientId) public view returns(
+            string memory,string memory,
+            string memory,string memory,
+            string memory,string memory,
+            bool, BloodType,uint ,uint
+        ){
+        return(
+            patients[patientId].img,
+            patients[patientId].dob,
+            patients[patientId].medicalConditions,
+            patients[patientId].allergies,
+            patients[patientId].medications,
+            patients[patientId].importantNotes,
+            patients[patientId].organDonar,
+            patients[patientId].bloodType,
+            patients[patientId].height,
+            patients[patientId].weight
+        );
+    }
+    
+    function get(uint ,) public view returns(){
+        return(
+            
+        );
+    }
+
+    function get(uint ,) public view returns(){
+        return(
+            
+        );
+    }
+
+    function get(uint ,) public view returns(){
+        return(
+            
+        );
+    }
+    
+    function get(uint ,) public view returns(){
+        return(
+            
+        );
+    }
+    
     //
     // set functions
     //
