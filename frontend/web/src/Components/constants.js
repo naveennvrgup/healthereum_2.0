@@ -27,3 +27,23 @@ export const Severity = {
     minor:2,
     major:3
 }
+
+export const randomnumber = () => {
+    return Math.round(Math.random()* Math.pow(10,15),0)
+}
+
+export const setaccount = (account) => {
+    sessionStorage.setItem('account',JSON.stringify(account))
+}
+
+export const getaccount = () => {
+    let user = sessionStorage.getItem('account')
+    if(user == undefined){
+        return {}
+    }
+    return JSON.parse(user)
+}
+
+export const removeAccount = () => {
+    sessionStorage.removeItem('account')
+}

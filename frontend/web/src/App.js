@@ -60,10 +60,7 @@ export default class App extends Component {
     //     console.log()
     //   })
 
-    blockchain.methods.getUser('god@gmail.com').call().then(d=>{
-      console.log(d)
-    })
-
+  
     // blockchain.methods.compareStrings('abc', 'abdc').send({from: accounts[0]}).then(d => {
     //   console.log(d)
     // })
