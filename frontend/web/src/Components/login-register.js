@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import web3 from '../blockchain/web3'
 import blockchain from '../blockchain/app'
 import * as constants from './constants'
@@ -37,6 +38,7 @@ class LoginRegister extends Component {
             userTypeId
         ).send({ from: accounts[0] }).then(d => {
             alert('please proceed to login')
+            console.log(d)
 
         })
 
@@ -58,6 +60,22 @@ class LoginRegister extends Component {
         blockchain.methods
             .getUser(this.luseremail.value).call().then(d => {
                 console.log(d)
+                constants.setaccount({
+                    name: d[0],
+                    phone: d[1],
+                    email: d[2],
+                    userType: d[3],
+                    id: d[4]
+                })
+
+
+                if (d[3] == constants.UserType.Patient) {
+                    this.props.history.push('/patient')
+                } else if (d[3] == constants.UserType.Hospital) {
+                    this.props.history.push('/hospital')
+                } else {
+                    this.props.history.push('/docter')
+                }
             })
     }
 
@@ -114,4 +132,4 @@ class LoginRegister extends Component {
     }
 }
 
-export default LoginRegister;
+export default withRouter(LoginRegister);
