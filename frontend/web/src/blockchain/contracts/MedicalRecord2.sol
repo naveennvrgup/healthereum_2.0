@@ -103,7 +103,7 @@ contract Courses{
     
     struct Test{
         uint docterId;
-        uint patient;
+        uint patientId;
         string createdAt;
         string description;
         string results;
@@ -119,7 +119,7 @@ contract Courses{
     }
     
     struct Procedure {
-        uint docter;
+        uint docterId;
         string description;
         string createdAt;
         Severity severity;
@@ -154,9 +154,11 @@ contract Courses{
     uint[] hospitalArr;
     
     mapping(uint=>Patient) patients;
-    uint[] patientArr;
-    
     mapping(uint=>Appointment) appointments;
+    mapping(uint=>Docter) docters;
+    mapping(uint=>Test) tests;
+    mapping(uint=>Diagnosis) diagnosises;
+    mapping(uint=>Procedure) procedures;
     mapping(uint=>Bill) bills;
 
     // 
@@ -219,13 +221,13 @@ contract Courses{
         string memory,
         UserType,
         uint){
-        for(int i=0;i<userArr.length;i++){
+        for(uint i=0;i<userArr.length;i++){
             if(compareStrings(users[userArr[i]].email,email)){
                 return(
                     users[userArr[i]].name,
                     users[userArr[i]].phone,
                     users[userArr[i]].email,
-                    users[userArr[i]].UserType,
+                    users[userArr[i]].userType,
                     users[userArr[i]].id);
             }
         }
@@ -235,33 +237,30 @@ contract Courses{
             string memory,string memory,
             string memory,string memory,
             string memory,string memory,
-            string memory,HositalType
+            HositalType
         ){
         return(
             hospitals[hopitalId].name,
             hospitals[hopitalId].location,
             hospitals[hopitalId].phones,
             hospitals[hopitalId].speciality,
-            hospitals[hopitalId].img,
             hospitals[hopitalId].emails,
             hospitals[hopitalId].description,
             hospitals[hopitalId].hositalType
         );
     }
     
+    function getHospitalImg(uint hopitalId) public view returns(string memory){
+        return(hospitals[hopitalId].img);
+    }
+    
     function getPatient(uint patientId) public view returns(
-            string memory,string memory,
-            string memory,string memory,
             string memory,string memory,
             bool, BloodType,uint ,uint
         ){
         return(
             patients[patientId].img,
             patients[patientId].dob,
-            patients[patientId].medicalConditions,
-            patients[patientId].allergies,
-            patients[patientId].medications,
-            patients[patientId].importantNotes,
             patients[patientId].organDonar,
             patients[patientId].bloodType,
             patients[patientId].height,
@@ -269,13 +268,22 @@ contract Courses{
         );
     }
     
-    function getDocter(uint hospitalId,uint docterId) public view returns(
+    function getPatientExtra(uint patientId) public view returns(
         string memory,string memory,
-        string memory,Gender){
+        string memory,string memory
+    ){
+        return(
+            patients[patientId].medicalConditions,
+            patients[patientId].allergies,
+            patients[patientId].medications,
+            patients[patientId].importantNotes);          
+    }
+    
+    function getDocter(uint hospitalId,uint docterId) public view returns(
+        string memory,string memory,string memory,Gender){
         return(
             hospitals[hospitalId].docters[docterId].img,
-            hospitals[hospitalId].doc,
-            Genderters[docterId].speciality,
+            hospitals[docterId].speciality,
             hospitals[hospitalId].docters[docterId].qualification,
             hospitals[hospitalId].docters[docterId].gender
         );
@@ -283,44 +291,74 @@ contract Courses{
 
     function getAppointment(uint appointmentId) public view returns(
             uint, bool, string memory,
-            string memory,string memory,
-            string memory,string memory,
             bool,bool,bool
         ){
         return(
             appointments[appointmentId].prevAppointmentId,
             appointments[appointmentId].prevAppointmentbool,
-            appointments[appointmentId].patientNote,
-            appointments[appointmentId].receptionNote,
-            appointments[appointmentId].finalNote,
             appointments[appointmentId].createdAt,
             appointments[appointmentId].accepted,
             appointments[appointmentId].seen,
             appointments[appointmentId].completed
         );
     }
+    
+    function getAppointmentNotes(uint appointmentId) public view returns(
+        string memory,string memory,string memory){
+        return(
+            appointments[appointmentId].patientNote,
+            appointments[appointmentId].receptionNote,
+            appointments[appointmentId].finalNote);
+    }
 
-    function getTest(uint appointmentId,uint testId) public view returns(
+    function getTest(uint testId) public view returns(
         uint, uint, string memory,
         string memory,string memory,
         string memory,bool){
         return(
-            appointments[appointmentId].tests[testId].docterId,
-            appointments[appointmentId].tests[testId].patientId,
-            appointments[appointmentId].tests[testId].createdAt,
-            appointments[appointmentId].tests[testId].description,
-            appointments[appointmentId].tests[testId].results,
-            appointments[appointmentId].tests[testId].file,
-            appointments[appointmentId].tests[testId].running
+            tests[testId].docterId,
+            tests[testId].patientId,
+            tests[testId].createdAt,
+            tests[testId].description,
+            tests[testId].results,
+            tests[testId].file,
+            tests[testId].running
         );
     }
     
-    function getDiagnosis(uint appointmentId, uint diagnosisId) public view returns(
+    function getDiagnosis(uint diagnosisId) public view returns(
         string memory, bool, uint){
         return(
-            appointments[appointmentId].diagnosises[diagnosisId].description,
-            appointments[appointmentId].diagnosises[diagnosisId].basedOnTest,
-            appointments[appointmentId].diagnosises[diagnosisId].testId
+            diagnosises[diagnosisId].description,
+            diagnosises[diagnosisId].basedOnTest,
+            diagnosises[diagnosisId].testId
+        );
+    }
+    
+    function getProcedure(uint procedureId) public view returns(
+        uint, string memory, string memory, Severity, string memory){
+        return(
+            procedures[procedureId].docterId,
+            procedures[procedureId].description,
+            procedures[procedureId].createdAt,
+            procedures[procedureId].severity,
+            procedures[procedureId].file
+        );
+    }
+    
+    function getBill(uint billId) public view returns(
+        string memory){
+        return(
+            bills[billId].createdAt
+        );
+    }
+    
+    function getBillItem(uint billId, uint billItemId) public view returns(
+        string memory, string memory, string memory){
+        return(
+            bills[billId].items[billItemId].name,
+            bills[billId].items[billItemId].price,
+            bills[billId].items[billItemId].quantity
         );
     }
     
