@@ -8,19 +8,17 @@ import DoctorDashboard from './Components/Doctor/doctor-app-board';
 import ViewHistorybyDoctor from './Components/Doctor/doctor-viewhistory';
 import PatientHistory from './Components/Patient/patient-history';
 import blockchain from './blockchain/app';
-import Torus from '@toruslabs/torus-embed'
 import Web3 from 'web3';
+import Torus from '@toruslabs/torus-embed'
 
 async function torusInit() {
   const torus = new Torus({
-    buttonPosition: "top-right" // default: bottom-left
+    buttonPosition: "top-right" // default: bottom-left 
   });
   await torus.init({
     buildEnv: "production",
     network: {
-      host: "rinkeby", // default: mainnet
-      chainId: 4, // default: 1
-      networkName: "Rinkeby Test Network" // default: Main Ethereum Network
+      host: "matic", // default: mainnet
     },
     showTorusButton: true
   })
@@ -33,11 +31,11 @@ async function torusInit() {
 
 export default class App extends Component {
   componentDidMount() {
-    // this.doblockchain()
+    this.doblockchain()
   }
 
   doblockchain = async () => {
-    // const accounts = await Web3.eth.getAccounts();
+    // const accounts = await web3.eth.getAccounts();
     // console.log(accounts)
 
     torusInit().then(a => console.log(a))
@@ -47,9 +45,9 @@ export default class App extends Component {
     //     console.log()
     //   })
 
-    blockchain.methods.getHospitals().call().then(d => {
-      console.log(d)
-    })
+    // blockchain.methods.compareStrings('abc','abc').call().then(d => {
+    //   console.log(d)
+    // })
   }
 
 
