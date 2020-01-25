@@ -29,7 +29,7 @@ class LoginRegister extends Component {
                             <span class="span">Use your email for registration</span>
                             <input class="input" type="text" placeholder="Name" />
                             <input class="input" type="email" placeholder="Email" />
-                            <input class="input" type="password" placeholder="Password" />
+                            <input class="input" type="password" placeholder="Phone" />
                             <button class="button">Sign Up</button>
                         </form>
                     </div>

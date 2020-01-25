@@ -5,6 +5,10 @@ import Logo from '../logo';
 import UserInfo from '../Doctor/right-panel';
 
 class DatatablePage extends Component {
+  componentDidMount() {
+    
+  }
+  
 
   button = () => {
     return (
