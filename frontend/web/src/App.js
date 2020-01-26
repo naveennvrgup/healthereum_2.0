@@ -1,5 +1,5 @@
-import React,{Suspense} from 'react';
-import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import Content from './Components/Content';
@@ -9,8 +9,22 @@ import RegisterDoctor from './Components/Hospital/register-doctor';
 import DoctorDashboard from './Components/Doctor/doctor-app-board';
 import ViewHistorybyDoctor from './Components/Doctor/doctor-viewhistory';
 import PatientHistory from './Components/Patient/patient-history';
+import blockchain from './blockchain/app';
+import web3 from './blockchain/web3';
 
-function App() {
+async function App() {
+  const accounts = await web3.eth.getAccounts();
+  console.log(accounts)
+  // blockchain.methods.addUser('8940073123', 'naveen sundar', 'naveennvrgup@gmail.com', 1, 1, '17-12-1998')
+  //   .send({from:accounts[0]})
+  //   .then(d => {
+  //     console.log()
+  //   })
+
+  blockchain.methods.getHospitals().call().then(d => {
+    console.log(d)
+  })
+
   return (
     <Suspense>
       <BrowserRouter>
@@ -25,13 +39,13 @@ function App() {
             <Route path='/dv-history' component={ViewHistorybyDoctor} />
             <Route path='/add-record' component={RegisterDoctor} />
 
-            <Route path='/pv-history' component={PatientHistory} />            
-            
+            <Route path='/pv-history' component={PatientHistory} />
+
           </Switch>
-          
-          
+
+
         </div>
-    </BrowserRouter>
+      </BrowserRouter>
     </Suspense>
   );
 }
