@@ -79,8 +79,8 @@ class Hospital extends Component {
                         }}
                     >
                         <Switch>
-                            <Route component={NewAppointment} path='/hospital/appointments/' />
-                            <Route component={Appointments} path='/hospital/appointments/new/' />
+                            <Route component={NewAppointment} path='/hospital/appointments/new/' />
+                            <Route component={Appointments} path='/hospital/appointments/' />
                             <Route component={CreateDocter} path='/hospital/doctors/new/' />
                             <Route component={Doctors} path='/hospital/doctors/' />
                             <Route component={CreateBill} path='/hospital/bills/new/' />
