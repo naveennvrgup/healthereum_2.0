@@ -1,6 +1,6 @@
 pragma solidity ^0.5.12;
 
-contract Courses{
+contract Medic{
     
     //
     // enum
@@ -210,6 +210,10 @@ contract Courses{
     // get view functions
     //
     
+    function getUsers() public view returns(uint[] memory){
+        return(userArr);
+    }
+    
     function getUser(string memory email) public view returns(
         string memory, 
         string memory, 
@@ -226,8 +230,6 @@ contract Courses{
                     users[userArr[i]].id);
             }
         }
-        
-        return (users[777].name,users[777].name,users[777].name,users[777].userType,users[777].id);
     }
     
     function getHospital(uint hopitalId) public view returns(
@@ -280,7 +282,7 @@ contract Courses{
         string memory,string memory,string memory,Gender){
         return(
             hospitals[hospitalId].docters[docterId].img,
-            hospitals[docterId].speciality,
+            hospitals[hospitalId].docters[docterId].speciality,
             hospitals[hospitalId].docters[docterId].qualification,
             hospitals[hospitalId].docters[docterId].gender
         );
@@ -371,7 +373,6 @@ contract Courses{
     uint userId,
     uint userTypeId
     ) public returns(bool) {
-        bool exists = compareStrings(users[userId].name,'');
         
         users[userId].name = name;
         users[userId].phone = phone;
@@ -379,11 +380,8 @@ contract Courses{
         users[userId].userType = userType;
         users[userId].id = userTypeId;
         
-        if(exists==false){
-            userArr.push(userId);
-        }
+        userArr.push(userId);
         
-        return(exists);
     }
     
     function addHospital(
@@ -396,7 +394,6 @@ contract Courses{
         string memory description,
         HositalType hositalType
         ) public returns(bool){
-        bool exists = compareStrings(hospitals[hospitalId].name, '');
         
         hospitals[hospitalId].name = name;
         hospitals[hospitalId].location = location;
@@ -406,9 +403,7 @@ contract Courses{
         hospitals[hospitalId].description = description;
         hospitals[hospitalId].hositalType = hositalType;
         
-        if(exists==false){
-            hospitalArr.push(hospitalId);
-        }
+        hospitalArr.push(hospitalId);
     }
     
     function addDocter(
@@ -416,16 +411,13 @@ contract Courses{
         uint docterId,
         string memory speciality,
         string memory qualification,
-        Gender gender) public returns(bool) {
-        bool exists = compareStrings(hospitals[hospitalId].docters[docterId].speciality,'');
+        Gender gender) public {
         
         hospitals[hospitalId].docters[docterId].speciality = speciality;
         hospitals[hospitalId].docters[docterId].qualification = qualification;
         hospitals[hospitalId].docters[docterId].gender =gender;
         
-        if(exists == true){
-            hospitals[hospitalId].docterArr.push(docterId);
-        }
+        hospitals[hospitalId].docterArr.push(docterId);
         
     }
     

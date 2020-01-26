@@ -7,6 +7,10 @@ import Dashboard from './Dashboard'
 import Appointments from './appointments'
 import Bills from './bills'
 import Doctors from './doctors'
+import CreateBill from './createBill'
+import CreateDocter from './createdocter'
+import NewAppointment from './newappointment'
+import NewHospital from './newhospital'
 
 const { Header, Sider, Content } = Layout;
 
@@ -27,7 +31,7 @@ class Hospital extends Component {
 
     render() {
         return (
-            <Layout style={{ height: '100vh' }} >
+            <Layout style={{ minHeight: '100vh' }} >
                 <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
                     {this.state.collapsed ?
                         <div className="text-center">
@@ -57,6 +61,7 @@ class Hospital extends Component {
                             <Icon type="logout" />
                             <span>Logout</span>
                         </Menu.Item>
+                        
                     </Menu>
                 </Sider>
                 <Layout className="site-layout">
@@ -74,9 +79,13 @@ class Hospital extends Component {
                         }}
                     >
                         <Switch>
-                            <Route component={Appointments} path='/hospital/appointments/' />
+                            <Route component={NewAppointment} path='/hospital/appointments/' />
+                            <Route component={Appointments} path='/hospital/appointments/new/' />
+                            <Route component={CreateDocter} path='/hospital/doctors/new/' />
                             <Route component={Doctors} path='/hospital/doctors/' />
+                            <Route component={CreateBill} path='/hospital/bills/new/' />
                             <Route component={Bills} path='/hospital/bills/' />
+                            <Route component={NewHospital}  path='/hospital/new/' />
                             <Route component={Dashboard}  path='/hospital/' />
                         </Switch>
                     </Content>

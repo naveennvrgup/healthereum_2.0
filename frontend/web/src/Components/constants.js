@@ -1,31 +1,31 @@
 export const UserType = {
-    Hospital:1,
-    Patient:2,
-    Docter:3
+    Hospital:0,
+    Patient:1,
+    Docter:2
 }
 export const HositalType = {
-    government:1,
-    privatelyOwned:2
+    government:0,
+    privatelyOwned:1
 }
 export const Gender = {
-    male:1,
-    female:2,
-    other:3
+    male:0,
+    female:1,
+    other:2
 }
 export const BloodType = {
-    Op:1,
-    On:2,
-    Ap:3,
-    An:4,
-    Bp:5,
-    Bn:6,
-    ABp:7,
-    ABn:8
+    Op:0,
+    On:1,
+    Ap:2,
+    An:3,
+    Bp:4,
+    Bn:5,
+    ABp:6,
+    ABn:7
 }
 export const Severity = {
-    mild:1,
-    minor:2,
-    major:3
+    mild:0,
+    minor:1,
+    major:2
 }
 
 export const randomnumber = () => {

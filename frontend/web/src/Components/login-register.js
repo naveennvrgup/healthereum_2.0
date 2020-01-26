@@ -93,9 +93,9 @@ class LoginRegister extends Component {
                         <input ref={e => this.semail = e} className="input" type="email" placeholder="Email" />
                         <input ref={e => this.sphone = e} className="input" type='text' placeholder="Phone" />
                         <select ref={e => this.susertype = e} className='input'>
-                            <option value="1">Hospital</option>
-                            <option value="2">Patient</option>
-                            <option value="3">Docter</option>
+                            <option value="0">Hospital</option>
+                            <option value="1">Patient</option>
+                            <option value="2">Docter</option>
                         </select>
                         <button onClick={this.signupHandler} className="button">Sign Up</button>
                     </form>
