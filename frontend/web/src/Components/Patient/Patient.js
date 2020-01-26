@@ -68,10 +68,10 @@ class Patient extends Component {
                         }}
                     >
                         <Switch>
+                            <Route component={CreateAppointment} path='/patient/appointments/new/' />
+                            <Route component={Appointments} path='/patient/appointments/' />
                             <Route component={CreatePatient} path='/patient/new/' />
                             <Route component={Dashboard} path='/patient/' />
-                            <Route component={Appointments} path='/patient/appointment/new/' />
-                            <Route component={CreateAppointment} path='/patient/appointment/' />
                         </Switch>
                     </Content>
                 </Layout>
