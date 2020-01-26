@@ -6,6 +6,10 @@ import spacy
 from spacy.matcher import PhraseMatcher
 from nlp import report
 
+#Blockchain APIs
+from ethApi import Patient, Hospital
+
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -27,6 +31,8 @@ parser = reqparse.RequestParser()
 parser.add_argument('task')
 
 api.add_resource(report, '/api')
+api.add_resource(Patient, '/api/patient')
+api.add_resource(Hospital, '/api/hospital')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080,  use_reloader=True)
