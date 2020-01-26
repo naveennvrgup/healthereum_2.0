@@ -53,10 +53,10 @@ class Hospital extends Component {
                             <Icon type="heart" />
                             <span>Docters</span>
                         </Menu.Item>
-                        <Menu.Item className='d-flex align-items-baseline' onClick={() => this.props.history.push('/hospital/bills/')} key="4">
+                        {/* <Menu.Item className='d-flex align-items-baseline' onClick={() => this.props.history.push('/hospital/bills/')} key="4">
                             <Icon type="credit-card" />
                             <span>Bills</span>
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item onClick={this.logout} className='d-flex align-items-baseline' key="5">
                             <Icon type="logout" />
                             <span>Logout</span>
