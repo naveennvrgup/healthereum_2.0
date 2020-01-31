@@ -56,7 +56,8 @@ export default class Appointments extends Component {
 
 
     render() {
-        const trs = this.state.appointments.map((ele, id) => <tr key={id}>
+        const temp = this.state.appointments.filter(ele => ele.createdAt && ele.createdAt.length>0)
+        const trs = temp.map((ele, id) => <tr key={id}>
             <td>{id + 1}</td>
             <td>{ele.patientId}</td>
             <td>{ele.createdAt}</td>
@@ -75,7 +76,7 @@ export default class Appointments extends Component {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Notes</th>
+                            <th>PatientID</th>
                             <th>CreatedAt</th>
                             <th>Receptionnote</th>
                             <th>Accepted</th>

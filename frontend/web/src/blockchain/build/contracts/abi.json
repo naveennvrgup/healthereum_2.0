@@ -342,6 +342,31 @@
 				"internalType": "uint256",
 				"name": "appointmentId",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "docterId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "hospitalId",
+				"type": "uint256"
+			}
+		],
+		"name": "appointDocter",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "appointmentId",
+				"type": "uint256"
 			}
 		],
 		"name": "completeAppointment",

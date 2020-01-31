@@ -40,7 +40,8 @@ export default class appointments extends Component {
                         receptionNote: d[1],
                         finalNote: d[2],
                         patientId: d[3],
-                        hospitalId: d[4]
+                        hospitalId: d[4],
+                        rawid: ele
                     };
                 })
 
@@ -55,12 +56,20 @@ export default class appointments extends Component {
 
 
     render() {
-        const trs = this.state.appointments.map((ele, id) => <tr key={id}>
-            <td>{id + 1}</td>
-            <td>{ele.patientId}</td>
-            <td>{ele.createdAt}</td>
-            <td>{ele.receptionNote}</td>
-        </tr>)
+        const temp = this.state.appointments.filter(ele=>ele.createdAt && ele.createdAt.length>0)
+        const trs = temp.map((ele, id) => {
+            return <tr
+                onClick={() => this.props.history.push({
+                    pathname: '/hospital/appoint/',
+                    state: ele
+                })}
+                key={id}>
+                <td>{id + 1}</td>
+                <td>{ele.patientId}</td>
+                <td>{ele.createdAt}</td>
+                <td>{ele.receptionNote}</td>
+            </tr>
+        })
 
         return (
             <div>

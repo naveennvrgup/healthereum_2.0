@@ -3,6 +3,10 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 import { Layout, Menu, Icon } from 'antd';
 import '../Hospital/Hospital.css';
 
+import AppointmentDetail from './AppointmentDetail'
+import Appointments from './Appointments'
+import Dashboard from './Dashboard'
+
 
 const { Header, Sider, Content } = Layout;
 
@@ -33,19 +37,19 @@ class Docter extends Component {
                             Docter
                 </div>}
                     <Menu theme="dark" mode="inline" >
-                        <Menu.Item  className='d-flex align-items-baseline' onClick={() => this.props.history.push('/docter/')} key="1">
+                        <Menu.Item className='d-flex align-items-baseline' onClick={() => this.props.history.push('/docter/')} key="1">
                             <Icon type="dashboard" />
                             <span>Dashboard</span>
                         </Menu.Item>
-                        <Menu.Item  className='d-flex align-items-baseline' onClick={() => this.props.history.push('/docter/appointments/')} key="1">
+                        <Menu.Item className='d-flex align-items-baseline' onClick={() => this.props.history.push('/docter/appointments/')} key="1">
                             <Icon type="dashboard" />
-                            <span>Dashboard</span>
+                            <span>Appointments</span>
                         </Menu.Item>
                         <Menu.Item onClick={this.logout} className='d-flex align-items-baseline' key="5">
                             <Icon type="logout" />
                             <span>Logout</span>
                         </Menu.Item>
-                        
+
                     </Menu>
                 </Sider>
                 <Layout className="site-layout">
@@ -63,7 +67,9 @@ class Docter extends Component {
                         }}
                     >
                         <Switch>
-                            {/* <Route component={NewAppointment} path='/hospital/appointments/new/' /> */}
+                            <Route component={AppointmentDetail} path='/docter/appointments/detail/' />
+                            <Route component={Appointments} path='/docter/appointments/' />
+                            <Route component={Dashboard} path='/docter/' />
                         </Switch>
                     </Content>
                 </Layout>

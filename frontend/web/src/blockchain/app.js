@@ -3,6 +3,6 @@ const abi = require('./build/contracts/abi.json');
 
 const  instance = new web3.eth.Contract(
     abi,
-    '0xF6583b1D4fD78f70fe473e55CbA52D1df1020ca0'
+    '0x6B8BaFbFC7c8989C9bd380b19070aa1c13a2D25E'
 );
 export default instance;

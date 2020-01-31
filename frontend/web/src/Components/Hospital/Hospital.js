@@ -11,6 +11,7 @@ import CreateBill from './createBill'
 import CreateDocter from './createdocter'
 import NewAppointment from './newappointment'
 import NewHospital from './newhospital'
+import Appoint from './appoint'
 
 const { Header, Sider, Content } = Layout;
 
@@ -83,6 +84,7 @@ class Hospital extends Component {
                             <Route component={Appointments} path='/hospital/appointments/' />
                             <Route component={CreateDocter} path='/hospital/doctors/new/' />
                             <Route component={Doctors} path='/hospital/doctors/' />
+                            <Route component={Appoint}  path='/hospital/appoint/' />
                             <Route component={CreateBill} path='/hospital/bills/new/' />
                             <Route component={Bills} path='/hospital/bills/' />
                             <Route component={NewHospital}  path='/hospital/new/' />
